@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BF3F0D7B-E94E-4810-99AF-B07561794062}|P_fun-application.csproj|d:\\3emeannee\\i323\\p_fun\\p_fun-application\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BF3F0D7B-E94E-4810-99AF-B07561794062}|P_fun-application.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BF3F0D7B-E94E-4810-99AF-B07561794062}|P_fun-application.csproj|D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{BF3F0D7B-E94E-4810-99AF-B07561794062}|P_fun-application.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\Cryptocurrency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Cryptocurrency.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,27 +32,34 @@
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAABQAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-08-28T12:44:51.306Z",
               "IsPinned": true,
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Cryptocurrency.cs",
+              "DocumentMoniker": "D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\Cryptocurrency.cs",
+              "RelativeDocumentMoniker": "Cryptocurrency.cs",
+              "ToolTip": "D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\Cryptocurrency.cs",
+              "RelativeToolTip": "Cryptocurrency.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-04T11:40:52.474Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Form1.cs [Design]",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Conception]",
               "DocumentMoniker": "D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
+              "ToolTip": "D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\Form1.cs [Conception]",
+              "RelativeToolTip": "Form1.cs [Conception]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-08-28T12:41:56.471Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2024-08-28T12:41:56.471Z"
             }
           ]
         }
