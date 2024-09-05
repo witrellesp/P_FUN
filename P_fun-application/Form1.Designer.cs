@@ -28,32 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.formsPlot1 = new ScottPlot.FormsPlot();
-            this.SuspendLayout();
+            formsPlot1 = new ScottPlot.FormsPlot();
+            menuOptions = new ComboBox();
+            cryptoSelected = new Label();
+            SuspendLayout();
             // 
             // formsPlot1
             // 
-            this.formsPlot1.Location = new System.Drawing.Point(140, 39);
-            this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(467, 346);
-            this.formsPlot1.TabIndex = 0;
-            this.formsPlot1.Load += new System.EventHandler(this.formsPlot1_Load);
+            formsPlot1.Location = new Point(160, 52);
+            formsPlot1.Margin = new Padding(5, 4, 5, 4);
+            formsPlot1.Name = "formsPlot1";
+            formsPlot1.Size = new Size(534, 461);
+            formsPlot1.TabIndex = 0;
+            formsPlot1.Load += formsPlot1_Load;
+            // 
+            // menuOptions
+            // 
+            menuOptions.AutoCompleteMode = AutoCompleteMode.Suggest;
+            menuOptions.FormattingEnabled = true;
+            menuOptions.Items.AddRange(new object[] { "Bitcoin", "Fantom" });
+            menuOptions.Location = new Point(720, 138);
+            menuOptions.Name = "menuOptions";
+            menuOptions.Size = new Size(151, 28);
+            menuOptions.TabIndex = 1;
+            menuOptions.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
+            // 
+            // cryptoSelected
+            // 
+            cryptoSelected.AutoSize = true;
+            cryptoSelected.Location = new Point(785, 186);
+            cryptoSelected.Name = "cryptoSelected";
+            cryptoSelected.Size = new Size(0, 20);
+            cryptoSelected.TabIndex = 2;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.formsPlot1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(914, 600);
+            Controls.Add(cryptoSelected);
+            Controls.Add(menuOptions);
+            Controls.Add(formsPlot1);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private ScottPlot.FormsPlot formsPlot1;
+        private ComboBox menuOptions;
+        private Label cryptoSelected;
     }
 }

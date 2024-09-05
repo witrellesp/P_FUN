@@ -1,85 +1,84 @@
 ﻿using ScottPlot;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//namespace P_fun_application
-//{
-//    class Cryptocurrency
-//    {
+namespace P_fun_application
+{
+    public class Cryptocurrency
+    {
+        public Cryptocurrency()
+        {
+            Dates = new List<DateTime>();
+            Prices = new List<double>();
+        }
 
-//        public Cryptocurrency(int id, DateTime date, DateTime dateOpen, DateTime dateClose, int highPrice, int lowPrice, int volume, int currency, string pathCSV)
-//        {
-//            this.id = id;
-//            this.date = date;
-//            this.dateOpen = dateOpen;
-//            this.dateClose = dateClose;
-//            this.highPrice = highPrice;
-//            this.lowPrice = lowPrice;
-//            this.volume = volume;
-//            this.currency = currency;
-//            this.pathCSV = pathCSV;
-//        }
+        public List<DateTime> Dates { get; private set; }
+        public List<double> Prices { get; private set; }
 
-//        int id { get; set; }
-//        DateTime date;
-//        DateTime dateOpen;
-//        DateTime dateClose;
-//        int highPrice;
-//        int lowPrice;
-//        int volume;
-//        int currency;
-//        string pathCSV;
+        public void LoadData(string path)
+        {
+
+            var lines = File.ReadAllLines(path);
+            Dates.Clear();
+            Prices.Clear();
 
 
-//        public void CreateChart(DateTime date, int y, string path)
-//        {
+            foreach (var line in lines.Skip(1))
+            {
+                var columns = line.Split(',');
 
+                if (columns.Length > 0)
+                {
+                    if (DateTime.TryParse(columns[0], out DateTime dateValue))
+                    {
+                        Dates.Add(dateValue);
+                    }
+                    //if (double.TryParse(columns[5].Trim(), out double priceValue))
+                    //{
+                    //    price.Add(priceValue);
+                    //}
+                    if (double.TryParse(columns[5].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
+                    {
+                        Prices.Add(value);
+                    }
+                }
+            }
 
+        }
+        public void CreateChart(FormsPlot formsPlot)
+        {
 
-//            var lines = File.ReadAllLines(path);
-//            foreach (var line in lines)
-//            {
-//                var columns = line.Split(',');
-//                if (columns.Length > 0)
-//                {
-//                    if (DateTime.TryParse(columns[0], out DateTime dateValue))
-//                    {
-//                        date.Add(dateValue);
-//                    }
-//                }
+            var plt = formsPlot.Plot;
 
-//            }
-//            DateTime[] pdValues = date.ToArray();
+            double[] dataX = Dates.Select(date => date.ToOADate()).ToArray();
+            double[] dataY = Prices.ToArray();
 
-
-
-
-//            double[] dataX = pdValues.Select(date => date.ToOADate()).ToArray();
-//            double[] dataY = new double[] { 0, 1, 2, 3, 4, 5, 6 }; //value
-
-//            var xlength = dataX.Length;
-//            var ylength = dataY.Length;
+            var xlength = dataX.Length;
+            var ylength = dataY.Length;
 
 
 
-//            formsPlot1.Plot.AddScatter(dataX, dataX); //test
-//            formsPlot1.Refresh();
+            plt.XLabel("Date");
+            plt.YLabel("Price");
+
+            plt.AddScatter(dataX, dataY);
+
+            plt.XAxis.DateTimeFormat(true);
 
 
+            formsPlot.Refresh();
+
+        }
 
 
+    }
 
 
-//        }
-//    }
-
-
-//}
-
-
+}
 
 
 
@@ -90,43 +89,3 @@ using System.Threading.Tasks;
 
 
 
-////void createChart()
-////{
-////    string path = @"BitcoinSV.csv";
-////    var lines = File.ReadAllLines(path);
-////    List<DateTime> pdValuesList = new List<DateTime>();
-
-////    double pdValue;
-
-
-////    foreach (var line in lines.Skip(1))
-////    {
-////        var columns = line.Split(',');
-
-////        if (columns.Length > 0)
-////        {
-////            if (DateTime.TryParse(columns[0], out DateTime dateValue))
-////            {
-////                pdValuesList.Add(dateValue);
-////            }
-////        }
-////    }
-
-////    DateTime[] pdValues = pdValuesList.ToArray();
-
-
-
-
-////    double[] dataX = pdValues.Select(date => date.ToOADate()).ToArray();
-////    double[] dataY = new double[] { 0, 1, 2, 3, 4, 5, 6 }; //value
-
-////    var xlength = dataX.Length;
-////    var ylength = dataY.Length;
-
-////    formsPlot1.Plot.AddScatter(dataX, dataX); //test
-////    formsPlot1.Refresh();
-
-
-
-
-////}

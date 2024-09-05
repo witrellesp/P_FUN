@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "EoRHNcw3ej0=",
+  "dgSpecHash": "26rVSVbAiUY=",
   "success": true,
   "projectFilePath": "D:\\3emeAnnee\\i323\\P_FUN\\P_fun-application\\P_fun-application.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pq81jlv\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.4\\microsoft.netcore.platforms.3.1.4.nupkg.sha512",
     "C:\\Users\\pq81jlv\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\pq81jlv\\.nuget\\packages\\scottplot\\4.1.60\\scottplot.4.1.60.nupkg.sha512",
-    "C:\\Users\\pq81jlv\\.nuget\\packages\\scottplot.winforms\\4.1.60\\scottplot.winforms.4.1.60.nupkg.sha512",
+    "C:\\Users\\pq81jlv\\.nuget\\packages\\scottplot\\4.1.74\\scottplot.4.1.74.nupkg.sha512",
+    "C:\\Users\\pq81jlv\\.nuget\\packages\\scottplot.winforms\\4.1.74\\scottplot.winforms.4.1.74.nupkg.sha512",
     "C:\\Users\\pq81jlv\\.nuget\\packages\\system.drawing.common\\4.7.2\\system.drawing.common.4.7.2.nupkg.sha512",
     "C:\\Users\\pq81jlv\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
   ],

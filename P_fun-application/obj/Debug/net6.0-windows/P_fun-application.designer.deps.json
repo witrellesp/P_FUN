@@ -26,26 +26,26 @@
           }
         }
       },
-      "ScottPlot/4.1.60": {
+      "ScottPlot/4.1.74": {
         "dependencies": {
           "System.Drawing.Common": "4.7.2",
           "System.Numerics.Vectors": "4.5.0"
         },
         "runtime": {
           "lib/net6.0/ScottPlot.dll": {
-            "assemblyVersion": "4.1.60.0",
-            "fileVersion": "4.1.60.0"
+            "assemblyVersion": "4.1.74.0",
+            "fileVersion": "4.1.74.0"
           }
         }
       },
-      "ScottPlot.WinForms/4.1.60": {
+      "ScottPlot.WinForms/4.1.74": {
         "dependencies": {
-          "ScottPlot": "4.1.60"
+          "ScottPlot": "4.1.74"
         },
         "runtime": {
           "lib/net6.0-windows7.0/ScottPlot.WinForms.dll": {
-            "assemblyVersion": "4.1.60.0",
-            "fileVersion": "4.1.60.0"
+            "assemblyVersion": "4.1.74.0",
+            "fileVersion": "4.1.74.0"
           }
         }
       },
@@ -93,19 +93,19 @@
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
     },
-    "ScottPlot/4.1.60": {
+    "ScottPlot/4.1.74": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-BRV/xEXQ9QQISvZ5tIMBN1VnvTwQcsXOwbq6kqE8zKbA7iyapdzdc7U9aM5g9pLZPi75FtWFAGICazugjbcY0g==",
-      "path": "scottplot/4.1.60",
-      "hashPath": "scottplot.4.1.60.nupkg.sha512"
+      "sha512": "sha512-1S84ODZxASurBMhBDCHlZAogpg5sJ3X5KuHiAFmUfGBuvLdiv8mc3BYiyFQzBE2tzWWtlOqMw5M3wtjqiA73YQ==",
+      "path": "scottplot/4.1.74",
+      "hashPath": "scottplot.4.1.74.nupkg.sha512"
     },
-    "ScottPlot.WinForms/4.1.60": {
+    "ScottPlot.WinForms/4.1.74": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-qL5/Le2KG7nUgJmLFAxLK7iV0Zxt4eEV9CCb+3ILammcVZrPdw9r1U9aqvzAJE96a56hLl8S1e0DZK6ghH6Rlg==",
-      "path": "scottplot.winforms/4.1.60",
-      "hashPath": "scottplot.winforms.4.1.60.nupkg.sha512"
+      "sha512": "sha512-qeZw+rf//x7n2AmKFT033rCQOdQ1rwMtyVojs9+TAFUUmt4euNJqJVJUJK+hGjW3UDShq1sdY+aJrKddBUbexg==",
+      "path": "scottplot.winforms/4.1.74",
+      "hashPath": "scottplot.winforms.4.1.74.nupkg.sha512"
     },
     "System.Drawing.Common/4.7.2": {
       "type": "package",

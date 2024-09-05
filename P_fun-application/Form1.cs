@@ -1,4 +1,10 @@
 
+using ScottPlot;
+using ScottPlot.Drawing.Colormaps;
+using System.Globalization;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using P_fun_application;
 namespace P_fun_application
 {
     public partial class Form1 : Form
@@ -10,78 +16,32 @@ namespace P_fun_application
 
         private void formsPlot1_Load(object sender, EventArgs e)
         {
-            createChart();
+
+
+            var Bitcoin = new Cryptocurrency();
+            Bitcoin.LoadData(@"BitcoinSV.csv");
+            Bitcoin.CreateChart(formsPlot1);
+
+
+            var Fantom = new Cryptocurrency();
+            Fantom.LoadData(@"Fantom.csv");
+            Fantom.CreateChart(formsPlot1);
+
+
+
         }
-        void createChart()
+
+        private void Form1_Load(object sender, EventArgs e)
         {
-            string path = @"BitcoinSV.csv";
-            var lines = File.ReadAllLines(path);
 
-            List<DateTime> date = new List<DateTime>();
-            
-            List<double> price = new List<double>();
+        }
 
-
-            foreach (var line in lines.Skip(1))
-            {
-                var columns = line.Split(',');
-
-                if (columns.Length > 0)
-                {
-                    if (DateTime.TryParse(columns[0], out DateTime dateValue))
-                    {
-                        date.Add(dateValue);
-                    }
-                    if (double.TryParse(columns[5], out double priceValue))
-                    {
-                        price.Add(priceValue);
-                    }
-                }
-            }
-
-            DateTime[] dates = date.ToArray();
-
-
-
-
-            double[] dataX = dates.Select(date => date.ToOADate()).ToArray();
-            double[] dataY = price.ToArray();
-
-            var xlength = dataX.Length;
-            var ylength = dataY.Length;
-
-
-
-            formsPlot1.Plot.XLabel("Date");
-            formsPlot1.Plot.YLabel("Valeur");
-
-            formsPlot1.Plot.AddSignal(dataY);
-           
-            formsPlot1.Plot.XAxis.DateTimeFormat(true);
-
-
-
-            DateTime startDate = date.First();
-            DateTime endDate = date.Last();
-            
-  
-
-            formsplot1.SetAxisLimits(xMin: startDate, xMax: endDate);
-
-
-
-            formsPlot1.Refresh();
-
-
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            cryptoSelected.Text= menuOptions.Text;
 
 
         }
     }
-    class Cryptocurrency
-    {
-        string name;
-        
-        
 
-    }
 }
