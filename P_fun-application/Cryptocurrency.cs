@@ -1,4 +1,5 @@
 ﻿using ScottPlot;
+using ScottPlot.Plottable;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -10,12 +11,15 @@ namespace P_fun_application
 {
     public class Cryptocurrency
     {
+
+
         public Cryptocurrency()
         {
             Dates = new List<DateTime>();
             Prices = new List<double>();
         }
 
+        public IPlottable? currentPlot;
         public List<DateTime> Dates { get; private set; }
         public List<double> Prices { get; private set; }
 
@@ -39,7 +43,7 @@ namespace P_fun_application
                     }
                     //if (double.TryParse(columns[5].Trim(), out double priceValue))
                     //{
-                    //    price.Add(priceValue);
+                    //    Prices.Add(priceValue);
                     //}
                     if (double.TryParse(columns[5].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
                     {
@@ -49,26 +53,46 @@ namespace P_fun_application
             }
 
         }
-        public void CreateChart(FormsPlot formsPlot)
-        {
 
+        public void CreateChart(FormsPlot formsPlot, bool isActivated)
+        {
             var plt = formsPlot.Plot;
 
-            double[] dataX = Dates.Select(date => date.ToOADate()).ToArray();
-            double[] dataY = Prices.ToArray();
+            plt.Style(Style.Black);
 
-            var xlength = dataX.Length;
-            var ylength = dataY.Length;
+            if (isActivated)
+            {
+                double[] dataX = Dates.Select(date => date.ToOADate()).ToArray();
+                double[] dataY = Prices.ToArray();
 
+                plt.Title("Crypto-analyzer");
+                plt.XLabel("Date");
+                plt.YLabel("Price");
 
+                // Supprimer l'ancienne courbe, si elle existe
+                if (currentPlot == null)
+                {
+                    plt.Remove(currentPlot);
+                    currentPlot = null;  
 
-            plt.XLabel("Date");
-            plt.YLabel("Price");
+                    currentPlot = plt.AddScatter(dataX, dataY);
+                    plt.XAxis.DateTimeFormat(true);
+                   
+                }
 
-            plt.AddScatter(dataX, dataY);
+                
+            }
+            else
+            {
+                // Supprimer la courbe spécifique si elle existe
+                if (currentPlot != null)
+                {
+                    plt.Remove(currentPlot);
 
-            plt.XAxis.DateTimeFormat(true);
-
+                    var limits = plt.GetAxisLimits();
+                    currentPlot = null;  // Réinitialiser la référence
+                }
+            }
 
             formsPlot.Refresh();
 

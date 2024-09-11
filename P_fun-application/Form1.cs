@@ -9,6 +9,11 @@ namespace P_fun_application
 {
     public partial class Form1 : Form
     {
+
+        private Cryptocurrency bitcoin = new Cryptocurrency();
+        private Cryptocurrency fantom = new Cryptocurrency();
+        private Cryptocurrency xrp = new Cryptocurrency();
+
         public Form1()
         {
             InitializeComponent();
@@ -17,18 +22,7 @@ namespace P_fun_application
         private void formsPlot1_Load(object sender, EventArgs e)
         {
 
-
-            var Bitcoin = new Cryptocurrency();
-            Bitcoin.LoadData(@"BitcoinSV.csv");
-            Bitcoin.CreateChart(formsPlot1);
-
-
-            var Fantom = new Cryptocurrency();
-            Fantom.LoadData(@"Fantom.csv");
-            Fantom.CreateChart(formsPlot1);
-
-
-
+           
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -38,9 +32,65 @@ namespace P_fun_application
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cryptoSelected.Text= menuOptions.Text;
+           
+        }
 
 
+
+        private void crypto1_CheckedChanged(object sender, EventArgs e)
+        {
+
+            bool graphOn = crypto1.Checked;
+
+            if (graphOn)
+            {
+                bitcoin.LoadData(@"BitcoinSV.csv");
+                bitcoin.CreateChart(formsPlot1, graphOn);
+
+            }
+
+
+
+            bitcoin.CreateChart(formsPlot1, graphOn);
+
+
+
+        }
+
+        private void crypto2_CheckedChanged(object sender, EventArgs e)
+        {
+       
+            bool graphOn= crypto2.Checked;
+            if (crypto2.Checked)
+            {
+                
+                fantom.LoadData(@"Fantom.csv");
+                fantom.CreateChart(formsPlot1, graphOn);
+
+
+            }
+                fantom.CreateChart(formsPlot1, graphOn);
+        }
+
+        private void crypt3_CheckedChanged(object sender, EventArgs e)
+        {
+
+          
+            bool graphOn;
+            if (crypto3.Checked)
+            {
+                graphOn = true;
+                xrp.LoadData(@"xrp.csv");
+                xrp.CreateChart(formsPlot1, graphOn);
+
+
+            }
+            else if (crypto3.Checked == false)
+            {
+                graphOn = false;
+                xrp.CreateChart(formsPlot1, graphOn);
+
+            }
         }
     }
 
