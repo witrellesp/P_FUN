@@ -34,6 +34,10 @@
             crypto2 = new CheckBox();
             crypto3 = new CheckBox();
             crypto1 = new CheckBox();
+            dateTimePicker1 = new DateTimePicker();
+            startDate = new Label();
+            endDate = new Label();
+            dateTimePicker2 = new DateTimePicker();
             SuspendLayout();
             // 
             // formsPlot1
@@ -70,9 +74,9 @@
             crypto2.AutoSize = true;
             crypto2.Location = new Point(654, 150);
             crypto2.Name = "crypto2";
-            crypto2.Size = new Size(67, 19);
+            crypto2.Size = new Size(77, 19);
             crypto2.TabIndex = 4;
-            crypto2.Text = "Fantom";
+            crypto2.Text = "Ethereum";
             crypto2.UseVisualStyleBackColor = true;
             crypto2.CheckedChanged += crypto2_CheckedChanged;
             // 
@@ -81,9 +85,9 @@
             crypto3.AutoSize = true;
             crypto3.Location = new Point(654, 190);
             crypto3.Name = "crypto3";
-            crypto3.Size = new Size(47, 19);
+            crypto3.Size = new Size(49, 19);
             crypto3.TabIndex = 5;
-            crypto3.Text = "XRP";
+            crypto3.Text = "BNB";
             crypto3.UseVisualStyleBackColor = true;
             crypto3.CheckedChanged += crypt3_CheckedChanged;
             // 
@@ -98,11 +102,51 @@
             crypto1.UseVisualStyleBackColor = true;
             crypto1.CheckedChanged += crypto1_CheckedChanged;
             // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Location = new Point(12, 475);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.TabIndex = 7;
+            dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
+            // 
+            // startDate
+            // 
+            startDate.AutoSize = true;
+            startDate.Location = new Point(12, 453);
+            startDate.Name = "startDate";
+            startDate.Size = new Size(58, 15);
+            startDate.TabIndex = 8;
+            startDate.Text = "Start Date";
+            startDate.Click += startDate_Click;
+            // 
+            // endDate
+            // 
+            endDate.AutoSize = true;
+            endDate.Location = new Point(250, 455);
+            endDate.Name = "endDate";
+            endDate.Size = new Size(54, 15);
+            endDate.TabIndex = 9;
+            endDate.Text = "End Date";
+            endDate.Click += endDate_Click;
+            // 
+            // dateTimePicker2
+            // 
+            dateTimePicker2.Location = new Point(250, 475);
+            dateTimePicker2.Name = "dateTimePicker2";
+            dateTimePicker2.Size = new Size(200, 23);
+            dateTimePicker2.TabIndex = 10;
+            dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(800, 510);
+            Controls.Add(dateTimePicker2);
+            Controls.Add(endDate);
+            Controls.Add(startDate);
+            Controls.Add(dateTimePicker1);
             Controls.Add(crypto1);
             Controls.Add(crypto3);
             Controls.Add(crypto2);
@@ -124,5 +168,9 @@
         private CheckBox crypto2;
         private CheckBox crypto3;
         private CheckBox crypto1;
+        private DateTimePicker dateTimePicker1;
+        private Label startDate;
+        private Label endDate;
+        private DateTimePicker dateTimePicker2;
     }
 }
