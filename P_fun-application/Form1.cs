@@ -50,12 +50,14 @@ namespace P_fun_application
             {
                 bitcoin.LoadData(@"BitcoinSV.csv");
                 bitcoin.CreateChart(formsPlot1, graphOn);
+                formsPlot1.MouseMove += (s, mouseEvent) => bitcoin.MousePoint(s, mouseEvent, formsPlot1);
 
             }
             else if (crypto1.Checked == false)
             {
                 graphOn = false;
                 bitcoin.CreateChart(formsPlot1, graphOn);
+               
 
             }
 
@@ -68,6 +70,9 @@ namespace P_fun_application
             {
                 ethereum.LoadData(@"ethereum.csv");
                 ethereum.CreateChart(formsPlot1, graphOn);
+                formsPlot1.MouseMove += (s, mouseEvent) => ethereum.MousePoint(s, mouseEvent, formsPlot1);
+
+
 
             }
             else if (crypto2.Checked == false)
@@ -87,6 +92,7 @@ namespace P_fun_application
                 graphOn = true;
                 bnb.LoadData(@"BNB.csv");
                 bnb.CreateChart(formsPlot1, graphOn);
+                formsPlot1.MouseMove += (s, mouseEvent) => bnb.MousePoint(s, mouseEvent, formsPlot1);
             }
             else if (crypto3.Checked == false)
             {

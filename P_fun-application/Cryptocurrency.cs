@@ -2,13 +2,13 @@
 using ScottPlot.Plottable;
 using System.Globalization;
 using P_fun_application;
+using System.Collections.Generic;
 
 namespace P_fun_application
 {
     public class Cryptocurrency
     {
-       
-
+        
         public Cryptocurrency()
         {
             Dates = new List<DateTime>();
@@ -20,7 +20,10 @@ namespace P_fun_application
         public List<double> Prices { get; private set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public object ToolTip { get; internal set; }
 
+        private ScatterPlot? scatterPlot;
+        private ToolTip? tooltip;
 
         public void LoadData(string path)
         {
@@ -76,7 +79,9 @@ namespace P_fun_application
                     currentPlot = null;
                 }
 
-                currentPlot = plt.AddScatter(dataX, dataY);
+                currentPlot = scatterPlot = plt.AddScatter(dataX, dataY);
+
+
 
                 //Limiter le déplacement des axes
                 var limits = plt.GetAxisLimits();
@@ -97,7 +102,7 @@ namespace P_fun_application
                 {
                     plt.XAxis.SetBoundary(newXMin, newXMax);
                 }
-                plt.YAxis.SetBoundary(newYMin, newYMax + 100);
+                plt.YAxis.SetBoundary(newYMin +25, newYMax + 100);
 
                 plt.XAxis.DateTimeFormat(true);
             }
@@ -113,13 +118,40 @@ namespace P_fun_application
                     currentPlot = null;
                 }
             }
-
+             
             formsPlot.Refresh();
 
         }
 
         public void FilterByDate()
         {
+
+        }
+        public void MousePoint(object sender, MouseEventArgs e, FormsPlot formsPlot)
+        {
+            if (scatterPlot == null) return;
+
+            (double mouseX, double mouseY) = formsPlot.GetMouseCoordinates();
+            var (index, nearestX, nearestY) = scatterPlot.GetPointNearest(mouseX, mouseY);
+            double dist = Math.Sqrt(Math.Pow(nearestX - mouseX, 2) + Math.Pow(nearestY - mouseY, 2));
+
+            var a = nearestX;
+
+            if (tooltip == null)
+            {
+                tooltip = new ToolTip();
+            }
+
+            if (dist < 45159)
+            {
+                DateTime dateFromNearestX = DateTime.FromOADate(nearestX);
+                Console.WriteLine($"MouseX: {mouseX}, NearestX: {Dates}, Date: {dateFromNearestX}, Price: {nearestY}");
+                tooltip.Show($"Date: {Dates[(int)nearestX+19]}, Price:{Prices[nearestY]:F2}", formsPlot, e.Location.X + 15, e.Location.Y + 15);
+            }
+            else
+            {
+                tooltip.Hide(formsPlot);
+            }
 
         }
 

@@ -72,7 +72,7 @@
             // crypto2
             // 
             crypto2.AutoSize = true;
-            crypto2.Location = new Point(654, 150);
+            crypto2.Location = new Point(653, 140);
             crypto2.Name = "crypto2";
             crypto2.Size = new Size(77, 19);
             crypto2.TabIndex = 4;
@@ -83,7 +83,7 @@
             // crypto3
             // 
             crypto3.AutoSize = true;
-            crypto3.Location = new Point(654, 190);
+            crypto3.Location = new Point(653, 165);
             crypto3.Name = "crypto3";
             crypto3.Size = new Size(49, 19);
             crypto3.TabIndex = 5;
@@ -104,9 +104,10 @@
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Location = new Point(12, 475);
+            dateTimePicker1.Format = DateTimePickerFormat.Short;
+            dateTimePicker1.Location = new Point(14, 475);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(200, 23);
+            dateTimePicker1.Size = new Size(93, 23);
             dateTimePicker1.TabIndex = 7;
             dateTimePicker1.ValueChanged += dateTimePicker1_ValueChanged;
             // 
@@ -123,7 +124,7 @@
             // endDate
             // 
             endDate.AutoSize = true;
-            endDate.Location = new Point(250, 455);
+            endDate.Location = new Point(162, 455);
             endDate.Name = "endDate";
             endDate.Size = new Size(54, 15);
             endDate.TabIndex = 9;
@@ -132,9 +133,10 @@
             // 
             // dateTimePicker2
             // 
-            dateTimePicker2.Location = new Point(250, 475);
+            dateTimePicker2.Format = DateTimePickerFormat.Short;
+            dateTimePicker2.Location = new Point(166, 475);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(200, 23);
+            dateTimePicker2.Size = new Size(94, 23);
             dateTimePicker2.TabIndex = 10;
             dateTimePicker2.ValueChanged += dateTimePicker2_ValueChanged;
             // 

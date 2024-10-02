@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("P_fun-application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c4a364cf044f6e0cbae7dc635b08220d647e5a06")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3a6dbbb29761b8afeafe29d0577040024180c2f8")]
 [assembly: System.Reflection.AssemblyProductAttribute("P_fun-application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("P_fun-application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
