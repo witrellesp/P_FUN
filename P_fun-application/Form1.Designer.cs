@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             formsPlot1 = new ScottPlot.FormsPlot();
-            menuOptions = new ComboBox();
             cryptoSelected = new Label();
             crypto2 = new CheckBox();
             crypto3 = new CheckBox();
@@ -49,22 +48,10 @@
             formsPlot1.TabIndex = 0;
             formsPlot1.Load += formsPlot1_Load;
             // 
-            // menuOptions
-            // 
-            menuOptions.AutoCompleteMode = AutoCompleteMode.Suggest;
-            menuOptions.FormattingEnabled = true;
-            menuOptions.Items.AddRange(new object[] { "Bitcoin", "Fantom" });
-            menuOptions.Location = new Point(655, 59);
-            menuOptions.Margin = new Padding(3, 2, 3, 2);
-            menuOptions.Name = "menuOptions";
-            menuOptions.Size = new Size(133, 23);
-            menuOptions.TabIndex = 1;
-            menuOptions.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            // 
             // cryptoSelected
             // 
             cryptoSelected.AutoSize = true;
-            cryptoSelected.Location = new Point(687, 140);
+            cryptoSelected.Location = new Point(671, 86);
             cryptoSelected.Name = "cryptoSelected";
             cryptoSelected.Size = new Size(0, 15);
             cryptoSelected.TabIndex = 2;
@@ -72,7 +59,7 @@
             // crypto2
             // 
             crypto2.AutoSize = true;
-            crypto2.Location = new Point(653, 140);
+            crypto2.Location = new Point(637, 86);
             crypto2.Name = "crypto2";
             crypto2.Size = new Size(77, 19);
             crypto2.TabIndex = 4;
@@ -83,7 +70,7 @@
             // crypto3
             // 
             crypto3.AutoSize = true;
-            crypto3.Location = new Point(653, 165);
+            crypto3.Location = new Point(637, 111);
             crypto3.Name = "crypto3";
             crypto3.Size = new Size(49, 19);
             crypto3.TabIndex = 5;
@@ -94,7 +81,7 @@
             // crypto1
             // 
             crypto1.AutoSize = true;
-            crypto1.Location = new Point(653, 116);
+            crypto1.Location = new Point(637, 62);
             crypto1.Name = "crypto1";
             crypto1.Size = new Size(63, 19);
             crypto1.TabIndex = 6;
@@ -153,7 +140,6 @@
             Controls.Add(crypto3);
             Controls.Add(crypto2);
             Controls.Add(cryptoSelected);
-            Controls.Add(menuOptions);
             Controls.Add(formsPlot1);
             Name = "Form1";
             Text = "Form1";
@@ -165,7 +151,6 @@
         #endregion
 
         private ScottPlot.FormsPlot formsPlot1;
-        private ComboBox menuOptions;
         private Label cryptoSelected;
         private CheckBox crypto2;
         private CheckBox crypto3;

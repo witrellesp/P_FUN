@@ -9,10 +9,11 @@ namespace P_fun_application
     public class Cryptocurrency
     {
         
-        public Cryptocurrency()
+        public Cryptocurrency(Color color)
         {
             Dates = new List<DateTime>();
             Prices = new List<double>();
+            Color = color;
         }
 
         public IPlottable? currentPlot;
@@ -24,6 +25,7 @@ namespace P_fun_application
 
         private ScatterPlot? scatterPlot;
         private ToolTip? tooltip;
+        public Color Color { get; set; }
 
         public void LoadData(string path)
         {
@@ -43,10 +45,11 @@ namespace P_fun_application
                     {
                         Dates.Add(dateValue);
                     }
-                    if (double.TryParse(columns[4].Trim(), out double priceValue))
+                    if (double.TryParse(columns[4].Trim(), out double priceValue)|| double.TryParse(columns[2].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
                     {
                         Prices.Add(priceValue);
                     }
+                    //Sur certains syste
                     //if (double.TryParse(columns[2].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
                     //{
                     //    Prices.Add(value);
@@ -56,17 +59,13 @@ namespace P_fun_application
 
         }
 
-        public void CreateChart(FormsPlot formsPlot, bool isActivated)
+        public void CreateChart(FormsPlot formsPlot, bool isActivated, List<DateTime> filteredDates = null, List<double> filteredPrices = null)
         {
-
             var plt = formsPlot.Plot;
-
-
-
             if (isActivated)
             {
-                double[] dataX = Dates.Select(date => date.ToOADate()).ToArray();
-                double[] dataY = Prices.ToArray();
+                double[] dataX = (filteredDates ?? Dates).Select(date => date.ToOADate()).ToArray();
+                double[] dataY = (filteredPrices ?? Prices).ToArray();
 
                 plt.Title("Crypto-analyzer");
                 plt.XLabel("Date");
@@ -79,9 +78,7 @@ namespace P_fun_application
                     currentPlot = null;
                 }
 
-                currentPlot = scatterPlot = plt.AddScatter(dataX, dataY);
-
-
+                currentPlot = scatterPlot = plt.AddScatter(dataX, dataY,color: Color);
 
                 //Limiter le déplacement des axes
                 var limits = plt.GetAxisLimits();
@@ -90,8 +87,6 @@ namespace P_fun_application
                 double newXMax = Math.Max(limits.XMax, dataX[dataX.Length - 1]);
                 double newYMin = Math.Min(limits.YMin, dataY.Min());
                 double newYMax = Math.Max(limits.YMax, dataY.Max());
-
-                
 
                 // Appliquer les nouvelles limites
                 if (newXMin < 0)
@@ -102,7 +97,8 @@ namespace P_fun_application
                 {
                     plt.XAxis.SetBoundary(newXMin, newXMax);
                 }
-                plt.YAxis.SetBoundary(newYMin +25, newYMax + 100);
+                plt.YAxis.SetBoundary(newYMin , newYMax + 50);
+                
 
                 plt.XAxis.DateTimeFormat(true);
             }
@@ -123,9 +119,26 @@ namespace P_fun_application
 
         }
 
-        public void FilterByDate()
+        public void FilterAndDisplay(DateTime startDate, DateTime endDate, FormsPlot formsPlot)
         {
+            var filteredData = Dates
+                .Select((date, index) => new { Date = date, Price = Prices[index] })
+                .Where(data => data.Date >= startDate && data.Date <= endDate)
+                .ToList();
 
+            
+            var filteredDates = filteredData.Select(data => data.Date).ToList();
+            var filteredPrices = filteredData.Select(data => data.Price).ToList();
+
+            
+            if (filteredDates.Count == 0 || filteredPrices.Count == 0)
+            {
+                MessageBox.Show("There is not data to the date range selected.");
+                return;
+            }
+
+          
+            CreateChart(formsPlot, true, filteredDates, filteredPrices);
         }
         public void MousePoint(object sender, MouseEventArgs e, FormsPlot formsPlot)
         {
@@ -135,24 +148,31 @@ namespace P_fun_application
             var (index, nearestX, nearestY) = scatterPlot.GetPointNearest(mouseX, mouseY);
             double dist = Math.Sqrt(Math.Pow(nearestX - mouseX, 2) + Math.Pow(nearestY - mouseY, 2));
 
-            var a = nearestX;
-
             if (tooltip == null)
             {
                 tooltip = new ToolTip();
             }
 
-            if (dist < 45159)
+            
+            if (nearestX > 0)
             {
-                DateTime dateFromNearestX = DateTime.FromOADate(nearestX);
-                Console.WriteLine($"MouseX: {mouseX}, NearestX: {Dates}, Date: {dateFromNearestX}, Price: {nearestY}");
-                tooltip.Show($"Date: {Dates[(int)nearestX+19]}, Price:{Prices[nearestY]:F2}", formsPlot, e.Location.X + 15, e.Location.Y + 15);
+               
+                try
+                {
+                    DateTime dateFromNearestX = DateTime.FromOADate(nearestX);
+                    Console.WriteLine($"MouseX: {mouseX}, NearestX: {nearestX}, Date: {dateFromNearestX}, Price: {nearestY}");
+                    tooltip.Show($"Date: {dateFromNearestX.ToString("d")}, Price: {nearestY:F2}", formsPlot, e.Location.X + 15, e.Location.Y + 15);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error converting nearestX to DateTime: {ex.Message}");
+                }
             }
             else
             {
+                Console.WriteLine($"nearestX is not valid: {nearestX}");
                 tooltip.Hide(formsPlot);
             }
-
         }
 
 
