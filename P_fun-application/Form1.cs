@@ -124,7 +124,7 @@ namespace P_fun_application
         }
         private void formsPlot1_Load(object sender, EventArgs e)
         {
-            /*A modifier*/
+            
 
 
         }

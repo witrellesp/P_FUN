@@ -45,15 +45,16 @@ namespace P_fun_application
                     {
                         Dates.Add(dateValue);
                     }
-                    if (double.TryParse(columns[4].Trim(), out double priceValue)|| double.TryParse(columns[2].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
+                    //Sur certains systeme il y a une erreur avec le format des valeurs 'prices'
+                    //if (double.TryParse(columns[4].Trim(), out double priceValue)|| double.TryParse(columns[2].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
+                    //{
+                    //    Prices.Add(priceValue);
+                    //}
+
+                    if (double.TryParse(columns[4].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double priceValue))
                     {
                         Prices.Add(priceValue);
                     }
-                    //Sur certains syste
-                    //if (double.TryParse(columns[2].Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
-                    //{
-                    //    Prices.Add(value);
-                    //}
                 }
             }
 
@@ -152,7 +153,7 @@ namespace P_fun_application
             {
                 tooltip = new ToolTip();
             }
-
+                
             
             if (nearestX > 0)
             {
@@ -161,7 +162,7 @@ namespace P_fun_application
                 {
                     DateTime dateFromNearestX = DateTime.FromOADate(nearestX);
                     Console.WriteLine($"MouseX: {mouseX}, NearestX: {nearestX}, Date: {dateFromNearestX}, Price: {nearestY}");
-                    tooltip.Show($"Date: {dateFromNearestX.ToString("d")}, Price: {nearestY:F2}", formsPlot, e.Location.X + 15, e.Location.Y + 15);
+                    tooltip.Show($"Date: {Dates[(int)nearestX+450]:d}, Price:{Prices[(int)nearestY]:F2}", formsPlot, e.Location.X + 15, e.Location.Y + 15);
                 }
                 catch (Exception ex)
                 {
